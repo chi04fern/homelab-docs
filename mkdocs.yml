@@ -1,6 +1,8 @@
 site_name: Chirath's Homelab
-site_description: Homelab documentation — architecture, incidents, runbooks
+site_description: Personal homelab documentation — architecture, incidents and runbooks
 site_author: Chirath
+site_url: https://docs.chya43.it/
+
 theme:
   name: material
   palette:
@@ -11,19 +13,33 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.top
+    - navigation.indexes
     - search.highlight
+    - search.suggest
     - content.code.copy
+    - content.tabs.link
+
+plugins:
+  - search
+  - tags:
+      tags_file: tags.md
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
 
 nav:
   - Home: index.md
   - Architecture:
+    - architecture/index.md
     - Overview: architecture/overview.md
     - Hardware: architecture/hardware.md
     - Services: architecture/services.md
     - Networking: architecture/networking.md
   - Incidents:
+    - incidents/index.md
     - Backlog: incidents/backlog.md
   - Runbooks: runbooks/index.md
+  - Tags: tags.md
 
 markdown_extensions:
   - admonition
@@ -35,8 +51,14 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - tables
   - attr_list
-
-site_url: https://docs.chya43.it/
-use_directory_urls: true
+  - md_in_html
+  - footnotes
+  - toc:
+      permalink: true

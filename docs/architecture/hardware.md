@@ -7,7 +7,7 @@
 | **CPU** | AMD Ryzen 5 6600H |
 | **GPU** | AMD Radeon 680M (integrated) |
 | **RAM** | ~16 GB |
-| **Disk** | ~171 GB |
+| **Disk** | ~512 GB |
 | **OS** | Ubuntu 24.04 LTS |
 | **Typical uptime** | 7+ days continuous |
 
