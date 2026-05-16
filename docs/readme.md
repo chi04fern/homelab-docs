@@ -26,8 +26,12 @@ Built with [MkDocs Material](https://squidfunk.github.io/mkdocs-material/) and s
 ## 🚀 Run locally
 
 ```bash
-docker run --rm -it -p 8000:8000 -v ${PWD}:/docs squidfunk/mkdocs-material
+git clone https://github.com/chi04fern/homelab-docs
+cd homelab-docs
+docker compose up
 ```
+
+Then open [http://localhost:8000](http://localhost:8000)
 
 ## 📁 Structure
 
