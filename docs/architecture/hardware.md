@@ -1,25 +1,25 @@
 # Hardware
 
-## Ninkear M6 — Server principale
+## Ninkear M6 — Main Server
 
-| Componente | Dettaglio |
+| Component | Details |
 |---|---|
 | **CPU** | AMD Ryzen 5 6600H |
-| **GPU** | AMD Radeon 680M (integrata) |
+| **GPU** | AMD Radeon 680M (integrated) |
 | **RAM** | ~16 GB |
-| **Disco** | ~171 GB |
+| **Disk** | ~171 GB |
 | **OS** | Ubuntu 24.04 LTS |
-| **Uptime tipico** | 7+ giorni continui |
+| **Typical uptime** | 7+ days continuous |
 
-La GPU integrata Radeon 680M viene usata per **hardware acceleration** in Jellyfin tramite VA-API, evitando la transcodifica software che consumerebbe CPU.
+The integrated Radeon 680M GPU is used for **hardware acceleration** in Jellyfin via VA-API, avoiding software transcoding that would heavily tax the CPU.
 
-## Acer Nitro 5 — Workstation principale
+## Acer Nitro 5 — Main Workstation
 
-| Componente | Dettaglio |
+| Component | Details |
 |---|---|
 | **CPU** | AMD Ryzen 9 6900HX |
 | **GPU** | NVIDIA RTX 3070 Ti |
 | **RAM** | 32 GB |
-| **Ruolo** | Gaming, sviluppo, macchina quotidiana |
+| **Role** | Gaming, development, daily driver |
 
-Usata anche per sviluppo e per connettersi ai servizi del homelab tramite WireGuard o rete LAN.
+Also used for development and connecting to homelab services via WireGuard or LAN.

@@ -1,35 +1,35 @@
 # Chirath's Homelab
 
-Documentazione del mio homelab personale: architettura, incidenti risolti, e runbook operativi.
+Documentation of my personal homelab: architecture, resolved incidents, and operational runbooks.
 
-## Scopo
+## Purpose
 
-Il homelab nasce con più obiettivi:
+The homelab was built with multiple goals in mind:
 
-- **Media server** — streaming locale di film, serie e musica senza dipendere da abbonamenti
-- **Privacy** — dati personali (foto, file, contatti) su infrastruttura propria con Nextcloud
-- **Apprendimento** — laboratorio pratico per studiare Docker, networking, Linux, DNS, VPN, reverse proxy
-- **Portfolio** — dimostrazione concreta di competenze sistemistiche per stage e lavoro
-- **Automazione** — workflow con n8n, playlist AI con AudioMuse, download automatici con Sonarr/Radarr
+- **Media server** — local streaming of movies, series, and music without relying on subscriptions
+- **Privacy** — personal data (photos, files, contacts) on self-hosted infrastructure with Nextcloud
+- **Learning** — hands-on lab for studying Docker, networking, Linux, DNS, VPN, and reverse proxies
+- **Portfolio** — concrete demonstration of sysadmin skills for internships and jobs
+- **Automation** — workflows with n8n, AI playlists with AudioMuse, automatic downloads with Sonarr/Radarr
 
 ## Hardware
 
-| Device | Ruolo |
+| Device | Role |
 |---|---|
-| **Ninkear M6** (Ryzen 5 6600H, Ubuntu 24.04) | Server principale |
-| **Acer Nitro 5** (Ryzen 9 6900HX, RTX 3070 Ti) | Workstation principale / dev |
+| **Ninkear M6** (Ryzen 5 6600H, Ubuntu 24.04) | Main server |
+| **Acer Nitro 5** (Ryzen 9 6900HX, RTX 3070 Ti) | Main workstation / dev |
 
-## Stack principale
+## Core Stack
 
 - **Reverse proxy**: Caddy
-- **DNS interno**: AdGuard Home (dominio `.home`)
+- **Internal DNS**: AdGuard Home (`.home` domain)
 - **VPN**: WireGuard via wg-easy
-- **Orchestrazione**: Docker Compose
+- **Orchestration**: Docker Compose
 - **Dashboard**: Homepage
 - **Monitoring**: Uptime Kuma
 
-## Navigazione
+## Navigation
 
-- [Architettura](architecture/overview.md) — schema completo dell'infrastruttura
-- [Incidenti](incidents/backlog.md) — problemi reali risolti, con root cause e lesson learned
-- [Runbook](runbooks/index.md) — guide operative per task comuni
+- [Architecture](architecture/overview.md) — full infrastructure diagram
+- [Incidents](incidents/backlog.md) — real problems solved, with root cause and lessons learned
+- [Runbooks](runbooks/index.md) — operational guides for common tasks

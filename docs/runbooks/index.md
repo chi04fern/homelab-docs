@@ -1,25 +1,25 @@
-# Runbook
+# Runbooks
 
-Guide operative per task comuni nel homelab.
+Operational guides for common homelab tasks.
 
-## In arrivo
+## Coming Soon
 
-- Come aggiungere un nuovo servizio con Caddy
-- Come creare un client WireGuard
-- Come fare backup di Nextcloud
-- Come verificare lo stato dei container
-- Come aggiornare tutti i container
+- How to add a new service with Caddy
+- How to create a WireGuard client
+- How to back up Nextcloud
+- How to check container status
+- How to update all containers
 
 ---
 
 ```bash
-# Stato di tutti i container
+# Check status of all containers
 docker ps -a
 
-# Aggiornare un container
+# Update a container
 docker compose pull <service>
 docker compose up -d <service>
 
-# Log in tempo reale
+# Live logs
 docker logs -f <container_name>
 ```

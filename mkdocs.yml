@@ -1,5 +1,5 @@
 site_name: Chirath's Homelab
-site_description: Documentazione del homelab — architettura, incidenti, runbook
+site_description: Homelab documentation — architecture, incidents, runbooks
 site_author: Chirath
 theme:
   name: material
@@ -16,22 +16,27 @@ theme:
 
 nav:
   - Home: index.md
-  - Architettura:
+  - Architecture:
     - Overview: architecture/overview.md
     - Hardware: architecture/hardware.md
-    - Servizi: architecture/services.md
+    - Services: architecture/services.md
     - Networking: architecture/networking.md
-  - Incidenti:
+  - Incidents:
     - Backlog: incidents/backlog.md
-  - Runbook: runbooks/index.md
+  - Runbooks: runbooks/index.md
 
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.highlight:
       anchor_linenums: true
   - tables
   - attr_list
+
 site_url: https://docs.chya43.it/
 use_directory_urls: true

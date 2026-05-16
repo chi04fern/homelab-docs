@@ -1,22 +1,22 @@
 # Overview
 
-Il homelab gira interamente su un **Ninkear M6** (mini PC), con Ubuntu 24.04 e Docker Compose come orchestratore.
+The homelab runs entirely on a **Ninkear M6** mini PC, with Ubuntu 24.04 and Docker Compose as the orchestrator.
 
-## Stack a colpo d'occhio
+## Stack at a Glance
 
 ```
 ┌─────────────────────────────────────────────┐
 │              Ninkear M6                      │
 │                                             │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  │
-│  │  Media   │  │  Musica  │  │  Cloud   │  │
+│  │  Media   │  │  Music   │  │  Cloud   │  │
 │  │ Jellyfin │  │Navidrome │  │Nextcloud │  │
 │  │  Sonarr  │  │AudioMuse │  │          │  │
-│  │  Radarr  │  │ Slskd    │  └──────────┘  │
+│  │  Radarr  │  │  Slskd   │  └──────────┘  │
 │  └──────────┘  └──────────┘                │
 │                                             │
 │  ┌──────────┐  ┌──────────┐  ┌──────────┐  │
-│  │    AI    │  │ Network  │  │ Mgmt     │  │
+│  │    AI    │  │ Network  │  │  Mgmt    │  │
 │  │Open WebUI│  │  Caddy   │  │Homepage  │  │
 │  │   n8n    │  │AdGuard   │  │Portainer │  │
 │  │          │  │WireGuard │  │Uptime K. │  │
@@ -24,8 +24,8 @@ Il homelab gira interamente su un **Ninkear M6** (mini PC), con Ubuntu 24.04 e D
 └─────────────────────────────────────────────┘
 ```
 
-## Sezioni
+## Sections
 
-- [Hardware](hardware.md) — specifiche del server e della workstation
-- [Servizi](services.md) — lista completa di tutti i container con porte e descrizioni
-- [Networking](networking.md) — Caddy, AdGuard, WireGuard, reti Docker
+- [Hardware](hardware.md) — server and workstation specs
+- [Services](services.md) — full list of all containers with ports and descriptions
+- [Networking](networking.md) — Caddy, AdGuard, WireGuard, Docker networks

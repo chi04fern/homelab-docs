@@ -1,69 +1,69 @@
-# Servizi
+# Services
 
-Tutti i servizi girano come container Docker sul Ninkear M6.
+All services run as Docker containers on the Ninkear M6.
 
 ## Media
 
-| Container | Immagine | Host Port | Descrizione |
+| Container | Image | Host Port | Description |
 |---|---|---|---|
-| `jellyfin` | `jellyfin/jellyfin` | 8096 | Media server (film, serie, video) |
-| `sonarr` | `linuxserver/sonarr` | 8989 | Gestione automatica serie TV |
-| `radarr` | `linuxserver/radarr` | 7878 | Gestione automatica film |
-| `prowlarr` | `linuxserver/prowlarr` | 9696 | Aggregatore indexer |
-| `bazarr` | `linuxserver/bazarr` | 6767 | Gestione sottotitoli |
-| `qbittorrent` | `linuxserver/qbittorrent` | 8081 (UI) / 6881 (P2P) | Client torrent |
-| `jellyseerr` | `fallenbagel/jellyseerr` | 5055 | Richieste media |
-| `flaresolverr` | `flaresolverr/flaresolverr` | 8191 | Bypass Cloudflare per indexer |
+| `jellyfin` | `jellyfin/jellyfin` | 8096 | Media server (movies, series, video) |
+| `sonarr` | `linuxserver/sonarr` | 8989 | Automatic TV series management |
+| `radarr` | `linuxserver/radarr` | 7878 | Automatic movie management |
+| `prowlarr` | `linuxserver/prowlarr` | 9696 | Indexer aggregator |
+| `bazarr` | `linuxserver/bazarr` | 6767 | Subtitle management |
+| `qbittorrent` | `linuxserver/qbittorrent` | 8081 (UI) / 6881 (P2P) | Torrent client |
+| `jellyseerr` | `fallenbagel/jellyseerr` | 5055 | Media requests |
+| `flaresolverr` | `flaresolverr/flaresolverr` | 8191 | Cloudflare bypass for indexers |
 
-## Musica
+## Music
 
-| Container | Immagine | Host Port | Descrizione |
+| Container | Image | Host Port | Description |
 |---|---|---|---|
-| `navidrome` | `deluan/navidrome:0.61.0` | 4533 | Streaming musicale (API Subsonic) |
-| `tidaloader` | `ghcr.io/rayz3r0/tidaloader` | 8001 (interno) | Download da Tidal |
-| `audiomuse-ai` | `ghcr.io/neptunehub/audiomuse-ai` | 8000 | Playlist AI con Gemini |
-| `octo-fiesta` | `ghcr.io/v1ck3s/octo-fiesta` | 5274 | Proxy Subsonic on-demand |
-| `music-grabber` | `g33kphr33k/musicgrabber` | interno | — |
-| `beets` | `linuxserver/beets` | interno | Organizzazione libreria musicale |
-| `slskd` | `slskd/slskd` | 5030-5031 / 50300 | Client Soulseek |
+| `navidrome` | `deluan/navidrome:0.61.0` | 4533 | Music streaming (Subsonic API) |
+| `tidaloader` | `ghcr.io/rayz3r0/tidaloader` | 8001 (internal) | Download from Tidal |
+| `audiomuse-ai` | `ghcr.io/neptunehub/audiomuse-ai` | 8000 | AI playlist generation with Gemini |
+| `octo-fiesta` | `ghcr.io/v1ck3s/octo-fiesta` | 5274 | On-demand Subsonic proxy |
+| `music-grabber` | `g33kphr33k/musicgrabber` | internal | — |
+| `beets` | `linuxserver/beets` | internal | Music library organization |
+| `slskd` | `slskd/slskd` | 5030-5031 / 50300 | Soulseek client |
 
-## Cloud personale
+## Personal Cloud
 
-| Container | Immagine | Host Port | Descrizione |
+| Container | Image | Host Port | Description |
 |---|---|---|---|
-| `nextcloud` | `nextcloud:apache` | interno (via Caddy) | Cloud personale |
-| `nextcloud-db` | `mariadb:11` | interno | Database Nextcloud |
+| `nextcloud` | `nextcloud:apache` | internal (via Caddy) | Personal cloud |
+| `nextcloud-db` | `mariadb:11` | internal | Nextcloud database |
 
-## AI / Automazione
+## AI / Automation
 
-| Container | Immagine | Host Port | Descrizione |
+| Container | Image | Host Port | Description |
 |---|---|---|---|
-| `open-webui` | `ghcr.io/open-webui/open-webui` | 3010 | UI per LLM locali/remoti |
-| `n8n` | `docker.n8n.io/n8nio/n8n` | 5678 | Automazione workflow |
-| `audiomuse-postgres` | `postgres:16` | interno | DB per AudioMuse |
-| `audiomuse-redis` | `redis:7` | interno | Cache per AudioMuse |
+| `open-webui` | `ghcr.io/open-webui/open-webui` | 3010 | UI for local/remote LLMs |
+| `n8n` | `docker.n8n.io/n8nio/n8n` | 5678 | Workflow automation |
+| `audiomuse-postgres` | `postgres:16` | internal | AudioMuse database |
+| `audiomuse-redis` | `redis:7` | internal | AudioMuse cache |
 
 ## Networking
 
-| Container | Immagine | Host Port | Descrizione |
+| Container | Image | Host Port | Description |
 |---|---|---|---|
-| `caddy` | `caddy:latest` | 80 / 443 | Reverse proxy + TLS automatico |
-| `adguardhome` | `adguard/adguardhome` | 53 / 8082 (UI) | DNS con ad-blocking |
-| `wg-easy` | `weejewel/wg-easy` | — | WireGuard VPN con UI web |
+| `caddy` | `caddy:latest` | 80 / 443 | Reverse proxy + automatic TLS |
+| `adguardhome` | `adguard/adguardhome` | 53 / 8082 (UI) | DNS with ad-blocking |
+| `wg-easy` | `weejewel/wg-easy` | — | WireGuard VPN with web UI |
 
-!!! warning "wg-easy immagine deprecata"
-    L'immagine `weejewel/wg-easy` non è più mantenuta. Migrare a `ghcr.io/wg-easy/wg-easy`.
+!!! warning "Deprecated wg-easy image"
+    Currently using `weejewel/wg-easy` which is no longer maintained. Migrate to `ghcr.io/wg-easy/wg-easy`.
 
 ## Management
 
-| Container | Immagine | Host Port | Descrizione |
+| Container | Image | Host Port | Description |
 |---|---|---|---|
-| `homepage` | `gethomepage/homepage:v1.9.0` | 3000 | Dashboard servizi |
-| `uptime-kuma` | `louislam/uptime-kuma:2.0.2` | 3001 | Monitoring uptime |
-| `portainer` | `portainer/portainer-ce:2.38.0` | 9000 (localhost only) | Gestione container |
+| `homepage` | `gethomepage/homepage:v1.9.0` | 3000 | Service dashboard |
+| `uptime-kuma` | `louislam/uptime-kuma:2.0.2` | 3001 | Uptime monitoring |
+| `portainer` | `portainer/portainer-ce:2.38.0` | 9000 (localhost only) | Container management |
 
-## Altro
+## Other
 
-| Container | Immagine | Descrizione |
+| Container | Image | Description |
 |---|---|---|
-| `bononi-wiki` | `nginx:alpine` | Sito del corso di networking/cloud (`reti.chya43.it`) |
+| `bononi-wiki` | `nginx:alpine` | Networking/cloud course website (`reti.chya43.it`) |

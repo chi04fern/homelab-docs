@@ -1,15 +1,15 @@
 # Networking
 
-## Schema generale
+## General Diagram
 
 ```
 Internet
     │
     ▼
-Cloudflare (DNS + proxy per domini pubblici *.chya43.it)
+Cloudflare (DNS + proxy for public domains *.chya43.it)
     │
     ▼
-Router di casa
+Home Router
     │
     ├── LAN (192.168.0.x)
     │       │
@@ -20,95 +20,95 @@ Router di casa
     │       ├── AdGuard Home :53 ← DNS
     │       └── wg-easy ← WireGuard VPN
     │
-    └── WireGuard clients (tunnel cifrato verso Ninkear)
+    └── WireGuard clients (encrypted tunnel to Ninkear)
 ```
 
 ## Reverse Proxy — Caddy
 
-Caddy gestisce tutto il traffico HTTP/HTTPS in ingresso. Gira come container Docker in `~/docker/proxy`.
+Caddy handles all incoming HTTP/HTTPS traffic. It runs as a Docker container in `~/docker/proxy`.
 
-**Tipi di dominio gestiti:**
+**Domain types managed:**
 
-| Tipo | Esempio | TLS |
+| Type | Example | TLS |
 |---|---|---|
-| Pubblico | `music.chya43.it` | Let's Encrypt automatico |
-| Interno LAN | `navidrome.home` | `tls internal` (self-signed) |
+| Public | `music.chya43.it` | Automatic Let's Encrypt |
+| Internal LAN | `navidrome.home` | `tls internal` (self-signed) |
 
 ```caddyfile
-# Dominio interno
+# Internal domain
 navidrome.home {
     tls internal
     reverse_proxy navidrome:4533
 }
 
-# Dominio pubblico
+# Public domain
 music.chya43.it {
     reverse_proxy navidrome:4533
 }
 ```
 
-!!! warning "Attenzione"
-    Non mischiare `tls internal` con domini pubblici, né lasciare Caddy senza direttiva TLS su domini `.home`.
+!!! warning "Important"
+    Never mix `tls internal` with public domains, and never leave Caddy without a TLS directive on `.home` domains.
 
-**Comandi utili:**
+**Useful commands:**
 
 ```bash
-# Reload configurazione senza restart
+# Reload config without restarting
 docker compose exec caddy caddy reload --config /etc/caddy/Caddyfile
 
-# Restart completo
+# Full restart
 docker restart caddy
 
-# Log in tempo reale
+# Live logs
 docker logs -f caddy
 ```
 
 ## DNS — AdGuard Home
 
-AdGuard Home funge da DNS server per tutta la LAN, con:
+AdGuard Home acts as the DNS server for the entire LAN, providing:
 
-- **Ad-blocking** tramite liste filtri
-- **DNS rewrites** per i domini `.home` → `192.168.0.11`
-- **Upstream DNS**: configurabili (es. `1.1.1.1`, `8.8.8.8`)
+- **Ad-blocking** via filter lists
+- **DNS rewrites** for `.home` domains → `192.168.0.11`
+- **Upstream DNS**: configurable (e.g. `1.1.1.1`, `8.8.8.8`)
 
-Porta UI: `8082` → `http://192.168.0.11:8082`
+Web UI port: `8082` → `http://192.168.0.11:8082`
 
 !!! note
-    Se AdGuard va down, tutta la LAN perde risoluzione DNS. È un single point of failure da tenere monitorato.
+    If AdGuard goes down, the entire LAN loses DNS resolution. It is a single point of failure and should be monitored closely.
 
 ## VPN — WireGuard (wg-easy)
 
-WireGuard permette accesso remoto sicuro ai servizi interni senza esporli pubblicamente.
+WireGuard provides secure remote access to internal services without exposing them publicly.
 
-- UI web: gestita da `wg-easy`
-- Utile per raggiungere servizi LAN-only dall'esterno (es. da scuola)
+- Web UI managed by `wg-easy`
+- Useful for reaching LAN-only services from outside (e.g. from school)
 
-!!! warning "Immagine deprecata"
-    In uso: `weejewel/wg-easy` (non più mantenuta).  
-    Da migrare a: `ghcr.io/wg-easy/wg-easy`
+!!! warning "Deprecated image"
+    Currently using: `weejewel/wg-easy` (no longer maintained).  
+    Migrate to: `ghcr.io/wg-easy/wg-easy`
 
-## Reti Docker
+## Docker Networks
 
-I container comunicano tramite reti Docker interne. Un container non raggiunge un altro se non sono sulla stessa rete.
+Containers communicate through internal Docker networks. A container cannot reach another unless they share the same network.
 
 ```bash
-# Vedere le reti esistenti
+# List existing networks
 docker network ls
 
-# Ispezionare quali container sono su una rete
-docker network inspect <nome_rete>
+# Inspect which containers are on a network
+docker network inspect <network_name>
 ```
 
-!!! tip "Regola pratica"
-    In Caddy (dentro Docker), usare sempre il nome del container come hostname:
+!!! tip "Practical rule"
+    Inside Caddy (running in Docker), always use the container name as the hostname:
     ```
     reverse_proxy navidrome:4533   ✅
-    reverse_proxy localhost:4533   ❌  (localhost = il container Caddy stesso)
+    reverse_proxy localhost:4533   ❌  (localhost = the Caddy container itself)
     ```
 
-## Porte esposte sull'host
+## Ports Exposed on Host
 
-| Porta | Protocollo | Servizio |
+| Port | Protocol | Service |
 |---|---|---|
 | 80 | TCP | Caddy (HTTP) |
 | 443 | TCP | Caddy (HTTPS) |
