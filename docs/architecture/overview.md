@@ -3,6 +3,21 @@
 The homelab runs entirely on a **Ninkear M6** mini PC, with Ubuntu 24.04 and Docker Compose as the orchestrator.
 
 ## Stack at a Glance
+```mermaid
+graph TD
+    Internet --> Cloudflare
+    Cloudflare --> Router
+    Router --> Ninkear
+
+    Ninkear --> Caddy
+    Caddy --> Jellyfin
+    Caddy --> Navidrome
+    Caddy --> Nextcloud
+    Caddy --> Jellyseerr
+
+    Ninkear --> AdGuard
+    Ninkear --> WireGuard
+```
 
 ```
 ┌─────────────────────────────────────────────┐
